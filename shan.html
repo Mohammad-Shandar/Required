@@ -9,6 +9,29 @@
 <link rel="stylesheet" href="styling.css">
 
 
+<script>
+  calculate = function()
+{
+    var principal = document.getElementById('princi').value;
+    var dura = document.getElementById('time').value; 
+
+    var today = new Date();
+    today.setMonth(today.getMonth()+parseInt(dura));
+
+    if(dura<6)
+    {
+      document.getElementById('ri').value=4;
+      document.getElementById("ma").value=parseFloat(principal)+parseFloat((principal*4*dura)/100);
+    }
+    else{
+      document.getElementById('ri').value=4.25;
+      document.getElementById("ma").value=parseFloat(principal)+parseFloat((principal*4.25*dura)/100);
+    }
+    document.getElementById("md").value=today.toLocaleDateString();
+ }
+</script>
+
+
 
 </head>
 <body>
@@ -31,27 +54,27 @@
 <table>
   <tr>
     <td>Amount</td>
-    <td><input type="number"></td>
+    <td><input id="princi" type="number" ></td>
   </tr>
 
   <tr>
     <td>Duration</td>
-    <td><input type="number"></td>
+    <td><input id="time"   type="number" onblur="calculate()"></td>
   </tr>
 
   <tr>
     <td>Rate Of Interest</td>
-    <td><label for=""></label></td>
+    <td> <input id="ri" style="color:rgb(224, 8, 8);font-size: larger;" /> </td> 
   </tr>
 
   <tr>
     <td>Maturity Amount</td>
-    <td><label for=""></label></td>
+    <td> <input id="ma" style="color:rgb(8, 240, 19);font-size: larger;" /> </td> 
   </tr>
 
   <tr>
     <td>Maturity Date</td>
-    <td><label for=""></label></td>
+    <td> <input id="md" style="color:rgb(8, 31, 240);font-size: larger;"  /> </td> 
   </tr>
 
   <tr>
